@@ -15,6 +15,7 @@ instance.interceptors.request.use(function (config) {
     const AUTH_TOKEN = Ls.get('auth.token');
 
     if(AUTH_TOKEN){
+        config.headers.common['Accept'] = `application/json`,
         config.headers.common['Authorization'] = `Bearer ${AUTH_TOKEN}`
     }
 

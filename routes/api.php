@@ -49,6 +49,10 @@ $api->version('v1',['middleware' => 'jwt.auth'], function ($api) {
         App::setLocale($locale);
     }
 
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::post('user/getUserDetails', '\euro_hms\Api\Controllers\UserController@getUserDetails');
+});
+
 
     // TODO: Move Method from web to api for Mobile App
          $api->post('doctorsInitialAssessment/create', '\euro_hms\Api\Controllers\FormsOptionsDataController@store')->name('doctorsInitialAssessment.store');
